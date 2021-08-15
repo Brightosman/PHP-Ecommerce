@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BasketController!{% endblock %}
+
+{% block body %}
+
+
+<div class="basket">
+
+    {% for product in basket %}
+        <div>{% if product.image %}<img src="/images/{{ product.image }}" alt="">{% endif %}</div>
+        <div>{{ product.name }}</div>
+        <div>€{{ product.price | number_format(2) }}</div>
+    <div>
+        <form method="post">
+            <button>Remove</button>
+            <input type="hidden" name="id" value="{{ product.id }}">
+        </form>
+    </div>
+    {% endfor %}
+    <div></div>
+    <div class="total">Total</div>
+    <div class="total">€{{ total | number_format(2) }}</div>
+</div>
+
+<form action="checkout" class="basket-form">
+    <button>Proceed to checkout</button>
+</form>
+{% endblock %}

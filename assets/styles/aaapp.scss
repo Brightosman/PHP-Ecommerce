@@ -1,0 +1,32 @@
+
+$baseline: 24px;
+
+body {
+    
+    font-family: 'Dancing Script', cursive;
+    font-size: medium;
+    color: green;
+}
+
+footer{
+    background-color: lightblue;
+    padding: $baseline;
+    hr{
+        display: none;
+    }
+}
+
+
+
+header{
+    background-color: lightblue;
+    font-size: 300px;
+    padding: $baseline;
+    hr{
+        display: none;
+    }
+}
+
+main{
+    padding: $baseline;
+}
