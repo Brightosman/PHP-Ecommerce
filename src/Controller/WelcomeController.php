@@ -6,14 +6,18 @@
 
     class WelcomeController extends AbstractController
     {
-        /**
-         * @Route("/welcome")
-         */
+        
+        #[Route('/welcome', name:'welcome')]
         public function homepage(): Response
         {
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+            
+            
             return $this->render(
                 'welcome.html.twig',[
                     'day'=>date('l'),
+                    'user' => $this->getUser()
+                    
                     
                 ]
             );

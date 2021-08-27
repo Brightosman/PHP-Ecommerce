@@ -1,15 +1,18 @@
 <?php 
     namespace App\Controller;
-    use Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
 
-    class HomeController
+
+    class HomeController extends AbstractController
     {
-        /**
-         * @Route("/first")
-         */
+        #[Route('/home', name:'home')]
         public function homepage(): Response
         {
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+            $user = $this->getUser();
             return new Response(
                 '<html><body><h1>Welcome to my world!</h1></body></html>'
             );
